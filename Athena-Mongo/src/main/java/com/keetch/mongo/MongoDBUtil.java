@@ -1,8 +1,8 @@
 package com.keetch.mongo;
 
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.MongoClient;
+import com.google.code.morphia.Datastore;
+import com.google.code.morphia.Morphia;
+import com.mongodb.Mongo;
 import com.mongodb.MongoException;
 
 import java.net.UnknownHostException;
@@ -11,12 +11,17 @@ import java.util.logging.Logger;
 
 public class MongoDBUtil {
 
-    private static DB database;
+    private static Datastore datastore;
 
     static {
         try {
-            MongoClient mongo = new MongoClient("localhost", 27017);
-            database = mongo.getDB("Athena");
+            Mongo mongo = new Mongo("localhost", 27017);
+            Morphia morphia = new Morphia();
+            datastore = morphia.createDatastore(mongo, "Athena");
+
+            morphia.mapPackage("com.city81.mongodb.morphia.entity");
+
+
         } catch (UnknownHostException ex) {
             Logger.getLogger(MongoDBUtil.class.getName()).log(Level.SEVERE, null, ex);
 
@@ -25,8 +30,8 @@ public class MongoDBUtil {
         }
     }
 
-    public static DBCollection getCollection(String collectionName) {
-        return database.getCollection(collectionName);
+    public static Datastore getDatastore() {
+        return datastore;
     }
 
 }
