@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>Athena-parent</artifactId>
         <groupId>Athena</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>Athena-Feedly</artifactId>
+
+    <artifactId>Athena-services</artifactId>
+
 
     <dependencies>
 
@@ -21,17 +22,14 @@
         </dependency>
 
         <dependency>
-            <groupId>com.rometools</groupId>
-            <artifactId>rome</artifactId>
-            <version>1.5.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jsoup</groupId>
-            <artifactId>jsoup</artifactId>
-            <version>1.8.1</version>
+            <groupId>Athena</groupId>
+
+            <artifactId>Athena-Feedly</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
 
     </dependencies>
+
 
 </project>

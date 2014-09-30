@@ -10,8 +10,10 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
+        <module>Athena-service</module>
         <module>Athena-Feedly</module>
         <module>Athena-Mongo</module>
+
     </modules>
 
     <build>

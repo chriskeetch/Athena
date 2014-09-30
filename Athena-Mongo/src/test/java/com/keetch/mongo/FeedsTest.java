@@ -1,7 +1,9 @@
 package com.keetch.mongo;
 
 import com.google.code.morphia.Key;
+import com.keetch.mongo.dao.ArticleDAO;
 import com.keetch.mongo.dao.FeedDAO;
+import com.keetch.mongo.model.Article;
 import com.keetch.mongo.model.Feed;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,10 +17,12 @@ import static org.junit.Assert.assertTrue;
 
 public class FeedsTest {
     private FeedDAO feedDao;
+    private ArticleDAO articleDao;
 
     @Before
     public void init() {
         feedDao = new FeedDAO();
+        articleDao = new ArticleDAO();
     }
 
 
@@ -43,9 +47,24 @@ public class FeedsTest {
     }
 
     @Test
+    public void listArticlesTest() {
+
+        for (Article a : articleDao.listFeeds()) {
+            System.out.println(a);
+            assertNotNull(a.getTitle());
+        }
+    }
+
+    @Test
     public void deleteAllTest() {
         feedDao.deleteAll();
         assertTrue(feedDao.listFeeds().size() == 0);
+    }
+
+    @Test
+    public void deleteAllArticlesTest() {
+        articleDao.deleteAll();
+        assertTrue(articleDao.listFeeds().size() == 0);
     }
 
 }
